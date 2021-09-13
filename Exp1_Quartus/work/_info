@@ -1,0 +1,90 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/16.1
+Ecircuito_exp1
+Z0 w1631450998
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dC:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus
+Z5 8C:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus/circuito_exp1.vhd
+Z6 FC:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus/circuito_exp1.vhd
+l0
+L5
+V`eHAoK`f>fD6g7`1>NG<81
+!s100 :o7]ISOBnjLF>FW7a6e7i2
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1631452351
+!i10b 1
+Z9 !s108 1631452351.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus/circuito_exp1.vhd|
+Z11 !s107 C:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus/circuito_exp1.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Artl
+R1
+R2
+R3
+DEx4 work 13 circuito_exp1 0 22 `eHAoK`f>fD6g7`1>NG<81
+l20
+L13
+V<5;3i;7i[kIJKA9XXjPg;0
+!s100 R[UhRV9>F<QzPW`JXNfh`3
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Ecircuito_exp1_tb
+Z14 w1631452329
+R2
+R3
+R4
+Z15 8C:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus/cirtuico_exp1_tb.vhd
+Z16 FC:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus/cirtuico_exp1_tb.vhd
+l0
+L6
+VRahkb>BCX2KX:`m?z8dGd0
+!s100 Ria[JQkMzUX`og9OjTL3z3
+R7
+32
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus/cirtuico_exp1_tb.vhd|
+Z18 !s107 C:/Users/Gustavo/Documents/lab_dig_II/Exp1_Quartus/cirtuico_exp1_tb.vhd|
+!i113 1
+R12
+R13
+Atb
+R2
+R3
+DEx4 work 16 circuito_exp1_tb 0 22 Rahkb>BCX2KX:`m?z8dGd0
+l33
+L9
+V7ec@0CO5l[Oz1G^n@g`bV1
+!s100 oHb?HKQ;TTW:Z=WW9_h]]0
+R7
+32
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
