@@ -1,0 +1,8 @@
+clock pin_m9
+posicao[1] pin_t20
+posicao[0] pin_r17
+posicao_out[1] pin_w2
+posicao_out[0] pin_aa1
+pwm pin_f15
+reset pin_p18
+reset_out pin_aa2
