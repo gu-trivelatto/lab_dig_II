@@ -1,0 +1,22 @@
+v 4
+file . "tx_serial_tb.vhd" "abb9ee527a1dd1b0d44e3cc2d70e593567a2de76" "20210919152835.675":
+  entity tx_serial_tb at 15( 668) + 0 on 23;
+  architecture tb of tx_serial_tb at 22( 774) + 0 on 24;
+file . "tx_serial_tick_uc.vhd" "379b46db53bd324ab92771eecac7d94259afe4ee" "20210919152811.234":
+  entity tx_serial_tick_uc at 18( 783) + 0 on 19;
+  architecture tx_serial_tick_uc_arch of tx_serial_tick_uc at 27( 1005) + 0 on 20;
+file . "edge_detector.vhd" "195ad49d5bb35f979db8c61bb558a4b6c2888186" "20210919152736.470":
+  entity edge_detector at 17( 703) + 0 on 15;
+  architecture behavioral of edge_detector at 27( 920) + 0 on 16;
+file . "contador_m.vhd" "aaa8e887d90a3fc6f68adbb3b02aafc3a8ce0848" "20210919152714.528":
+  entity contador_m at 18( 734) + 0 on 11;
+  architecture contador_m_arch of contador_m at 34( 1119) + 0 on 12;
+file . "deslocador_n.vhd" "2fccf31b9b5af0fd953800461306f3a2ab54a1c7" "20210919152726.363":
+  entity deslocador_n at 19( 783) + 0 on 13;
+  architecture deslocador_n_arch of deslocador_n at 34( 1214) + 0 on 14;
+file . "tx_serial_7E2_fd.vhd" "7b5b5210475b16fa76e187101e46049439259b34" "20210919152759.847":
+  entity tx_serial_7e2_fd at 17( 717) + 0 on 17;
+  architecture tx_serial_7e2_fd_arch of tx_serial_7e2_fd at 30( 1080) + 0 on 18;
+file . "tx_serial_7E2.vhd" "c69a14f8dfbad7788a0d757bced263ec8730b22d" "20210919152818.866":
+  entity tx_serial_7e2 at 17( 739) + 0 on 21;
+  architecture tx_serial_7e2_arch of tx_serial_7e2 at 30( 1022) + 0 on 22;
