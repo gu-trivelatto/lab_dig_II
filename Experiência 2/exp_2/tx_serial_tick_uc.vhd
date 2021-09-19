@@ -1,20 +1,3 @@
-------------------------------------------------------------------
--- Arquivo   : tx_serial_tick_uc.vhd
--- Projeto   : Experiencia 2 - Transmissao Serial Assincrona
-------------------------------------------------------------------
--- Descricao : circuito da experiencia 2 
---             > unidade de controle para o circuito
---             > de transmissao serial assincrona
---             > 
---             > usa a tecnica de superamostragem com o uso
---             > de sinal de tick para transmissao de dados
-------------------------------------------------------------------
--- Revisoes  :
---     Data        Versao  Autor             Descricao
---     09/09/2021  1.0     Edson Midorikawa  versao inicial
-------------------------------------------------------------------
---
-
 library ieee;
 use ieee.std_logic_1164.all;
 
