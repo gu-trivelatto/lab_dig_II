@@ -99,7 +99,9 @@ begin
                  pronto_rx=>      pronto_out,
                  tem_dado=>       temdado_out,
                  dado_recebido=>  dado_out,
-                 db_estado=>      open
+                 db_estado=>      open,
+                 db_dado_decimal=>open,
+                 db_dado_unidade=>open
        );
 
   ---- Geracao dos sinais de entrada (estimulo)

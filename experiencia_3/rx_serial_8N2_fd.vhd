@@ -9,7 +9,9 @@ entity rx_serial_8N2_fd is
         zera, conta, carrega, desloca: in  std_logic;
         entrada_serial:                in  std_logic;
         dados_ascii:                   out std_logic_vector (7 downto 0);
-        fim:                           out std_logic
+        fim:                           out std_logic;
+        -- dados de debuging
+        db_dado_decimal, db_dado_unidade: out std_logic_vector (6 downto 0)
     );
 end entity;
 
@@ -48,6 +50,12 @@ architecture rx_serial_8N2_fd_arch of rx_serial_8N2_fd is
         Q: out std_logic_vector (N-1 downto 0)
     );
     end component;
+
+    component hex7seg is port (
+        hexa: in std_logic_vector (3 downto 0);
+        sseg: out std_logic_vector (6 downto 0)
+    );
+    end component;
     
     signal s_full_word: std_logic_vector (10 downto 0);
     signal s_saida: std_logic_vector (10 downto 0);
@@ -59,6 +67,12 @@ begin
     U2: contadorg_m generic map (M => 13) port map (clock, zera, zera, conta, open, fim, open);
 
     U3: registrador_n generic map (N => 11) port map (clock, zera, registra, s_full_word, s_saida);
+
+    -- conversor de 7 segmentos para a parte decimal do sinal de saida
+    U4_SSEG: hex7seg port map (s_saida(8 downto 5), db_dado_decimal);
+
+    -- conversor de 7 segmentos para a parte unitária do sinal de saida
+    U5_SSEG: hex7seg port map (s_saida(4 downto 1), db_dado_unidade);
 
     dados_ascii <= s_saida(8 downto 1);
     
