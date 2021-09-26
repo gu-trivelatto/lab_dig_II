@@ -67,6 +67,7 @@ begin
     wait for 20*clockPeriod;
 
     ---- acionamento da partida (inicio da transmissao)
+    wait for 10420*clockPeriod;  -- aguardando aproximadamente a passagem de dois ticks
     partida_in <= '1';
     wait until rising_edge(clock_in);
     wait for 5*clockPeriod; -- pulso partida com 5 periodos de clock
@@ -74,15 +75,41 @@ begin
 
     ---- espera final da transmissao (pulso pronto em 1)
 	wait until pronto_out='1';
+
+  ---- final do caso de teste 1
+    
+    ---- dado de entrada da simulacao (caso de teste #2)
+    dados_ascii_8_in <= "00110101"; -- x35 = '5'	
+    wait for 20*clockPeriod;
+
+    ---- acionamento da partida (inicio da transmissao)
+    partida_in <= '1';
+    wait until rising_edge(clock_in);
+    wait for 5*clockPeriod; -- pulso partida com 5 periodos de clock
+    partida_in <= '0';
+
+    ---- espera final da transmissao (pulso pronto em 2)
+	wait until pronto_out='1';
 	
-	---- final do caso de teste 1
+	---- final do caso de teste 2
 
     -- intervalo entre casos de teste
     wait for 5000*clockPeriod;
 	
-    ----
-    ---- colocar aqui outros casos de teste
-    ----
+    ---- dado de entrada da simulacao (caso de teste #3)
+    dados_ascii_8_in <= "00110101"; -- x35 = '5'	
+    wait for 20*clockPeriod;
+
+    ---- acionamento da partida (inicio da transmissao)
+    partida_in <= '1';
+    wait until rising_edge(clock_in);
+    wait for 5*clockPeriod; -- pulso partida com 5 periodos de clock
+    partida_in <= '0';
+
+    ---- espera final da transmissao (pulso pronto em 3)
+	wait until pronto_out='1';
+
+  ---- final do caso de teste 3
 
 
     ---- final dos casos de teste da simulacao

@@ -1,0 +1,21 @@
+Quartus Prime Archive log --	C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/tx_serial_8N2.qarlog
+
+Archive:	C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/tx_serial_8N2.qar
+Date:		Mon Sep 20 10:58:27 2021
+Quartus Prime		16.1.0 Build 196 10/24/2016 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/contador_m.vhd
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/deslocador_n.vhd
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/edge_detector.vhd
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/tx_serial_8N2.qpf
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/tx_serial_8N2.qsf
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/tx_serial_8N2.vhd
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/tx_serial_8N2_fd.vhd
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/tx_serial_tb.vhd
+C:/Users/Gustavo/Documents/lab_dig_II/Experiência 2/exp_2/tx_serial_tick_uc.vhd
+c:/intelfpga_lite/16.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 10 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
