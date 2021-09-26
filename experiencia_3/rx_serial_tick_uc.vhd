@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity rx_serial_tick_uc is 
     port ( clock, reset, dado, tick, fim, recebe_dado:                       in  std_logic;
            zera, limpa, conta, carrega, desloca, pronto, registra, tem_dado: out std_logic;
-           estado_hex:                                                       out std_logic_vector (4 downto 0)
+           estado_hex:                                                       out std_logic_vector (3 downto 0)
     );
 end entity;
 
@@ -51,7 +51,7 @@ begin
  
         when final =>            Eprox <= dado_presente;
 
-        when dado_presente =>    if recebe_dado='0' then Eprox <= recebe_dado;
+        when dado_presente =>    if recebe_dado='0' then Eprox <= dado_presente;
                                  else                    Eprox <= inicial;
                                  end if;
 
@@ -90,14 +90,14 @@ begin
     process (Eatual)
     begin
         case Eatual is
-            when inicial => estado_hex <= '0000';
-            when preparacao => estado_hex <= '0001';
-            when espera => estado_hex <= '0010';
-            when recepcao => estado_hex <= '0011';
-            when armazena => estado_hex <= '0100';
-            when final => estado_hex <= '0101';
-            when dado_presente => estado_hex <= '0110';
-            when others => estado_hex <= '1111';
+            when inicial => estado_hex <= "0000";
+            when preparacao => estado_hex <= "0001";
+            when espera => estado_hex <= "0010";
+            when recepcao => estado_hex <= "0011";
+            when armazena => estado_hex <= "0100";
+            when final => estado_hex <= "0101";
+            when dado_presente => estado_hex <= "0110";
+            when others => estado_hex <= "1111";
         end case;
     end process;
 

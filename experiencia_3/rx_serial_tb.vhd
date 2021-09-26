@@ -22,7 +22,7 @@ end entity;
 
 architecture tb of rx_serial_tb is
   
-  -- Declaração de sinais para conectar o componente a ser testado (DUT)
+  -- Declaraï¿½ï¿½o de sinais para conectar o componente a ser testado (DUT)
   signal clock_in:    std_logic  := '0';
   signal reset_in:    std_logic  := '0';
   signal recebe_in:   std_logic  := '0';
@@ -35,7 +35,7 @@ architecture tb of rx_serial_tb is
   signal entrada_serial_in: std_logic := '1';
   signal serialData:        std_logic_vector(7 downto 0) := "00000000";
 
-  -- Configurações do clock
+  -- Configuraï¿½ï¿½es do clock
   constant clockPeriod : time := 20 ns;            -- 50MHz
   constant bitPeriod :   time := 5208*clockPeriod; -- 5208 clocks por bit (9.600 bauds)
   -- constant bitPeriod : time := 454*clockPeriod; -- 454 clocks por bit (115.200 bauds)
@@ -82,14 +82,14 @@ architecture tb of rx_serial_tb is
         -- inserir aqui outros casos de teste (inserir "," na linha anterior)
       );
 
-  signal keep_simulating: std_logic := '0'; -- delimita o tempo de geração do clock
+  signal keep_simulating: std_logic := '0'; -- delimita o tempo de geraï¿½ï¿½o do clock
   
 begin
  
   ---- Gerador de Clock
   clock_in <= (not clock_in) and keep_simulating after clockPeriod/2;
  
-  -- Instanciação direta DUT (Device Under Test)
+  -- Instanciaï¿½ï¿½o direta DUT (Device Under Test)
   DUT: entity work.rx_serial_8N2 (estrutural)
        port map (  
                  clock=>          clock_in, 
@@ -138,7 +138,7 @@ begin
     assert false report "fim da simulacao" severity note;
     keep_simulating <= '0';
     
-    wait; -- fim da simulação: aguarda indefinidamente
+    wait; -- fim da simulaï¿½ï¿½o: aguarda indefinidamente
 
   end process stimulus;
 
