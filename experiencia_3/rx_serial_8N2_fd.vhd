@@ -64,7 +64,7 @@ begin
 
     U1: deslocador_n generic map (N => 11) port map (clock, reset, carrega, desloca, entrada_serial, "00000000000", s_full_word);
 
-    U2: contadorg_m generic map (M => 13) port map (clock, zera, zera, conta, open, fim, open);
+    U2: contadorg_m generic map (M => 12) port map (clock, zera, zera, conta, open, fim, open);
 
     U3: registrador_n generic map (N => 11) port map (clock, zera, registra, s_full_word, s_saida);
 
