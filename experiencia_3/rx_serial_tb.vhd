@@ -65,6 +65,42 @@ architecture tb of rx_serial_tb is
   end UART_WRITE_BYTE;
   -- fim procedure
 
+  procedure UART_WRITE_BYTE_EXTRA_CASE (
+      Data_In : in  std_logic_vector(7 downto 0);
+      signal Serial_Out : out std_logic;
+      id : natural;
+      signal Reset : out std_logic;
+      signal Recebe: out std_logic) is
+  begin
+
+      -- envia Start Bit
+      Serial_Out <= '0';
+      wait for bitPeriod;
+
+      -- envia Dado de 5 bits
+      for ii in 0 to 4 loop
+          Serial_Out <= Data_In(ii);
+          wait for bitPeriod;
+      end loop;  -- loop ii
+      
+      if id = 7 then
+        Reset <= '1';
+      else
+        Recebe <= '1';
+      end if;
+
+      -- envia Dado de 3 bits
+      for ii in 5 to 7 loop
+        Serial_Out <= Data_In(ii);
+        wait for bitPeriod;
+    end loop;  -- loop ii
+
+      -- envia 2 Stop Bits
+      Serial_Out <= '1';
+      wait for 2*bitPeriod;
+
+  end UART_WRITE_BYTE_EXTRA_CASE;
+
   ---- Array de casos de teste
   type caso_teste_type is record
       id   : natural;
@@ -78,7 +114,10 @@ architecture tb of rx_serial_tb is
         (2, "01010101"), -- 55H
         (3, "10101010"), -- AAH
         (4, "11111111"), -- FFH
-        (5, "00000000")  -- 00H
+        (5, "00000000"), -- 00H
+        (6, "00100000"), -- 20H
+        (7, "00110000"), -- 30H
+        (8, "01000000")  -- 40H
         -- inserir aqui outros casos de teste (inserir "," na linha anterior)
       );
 
@@ -119,6 +158,61 @@ begin
 
     ---- loop pelos casos de teste
     for i in casos_teste'range loop
+      if casos_teste(i).id = 6 then
+        assert false report "Caso de teste " & integer'image(casos_teste(i).id) severity note;
+        serialData <= casos_teste(i).data; -- caso de teste "i"
+        wait for 10*clockPeriod;
+
+        reset_in <= '1';
+        wait for 10*bitPeriod;
+        reset_in <= '0';
+
+        -- 1) envia bits seriais para circuito de recepcao
+        UART_WRITE_BYTE ( Data_In=>serialData, Serial_Out=>entrada_serial_in );
+        entrada_serial_in <= '1'; -- repouso
+        wait for bitPeriod;
+
+        -- 2) simula recebimento do dado (p.ex. circuito principal registra saida)
+        wait until falling_edge(clock_in);
+        recebe_in <= '1', '0' after 2*clockPeriod;
+
+        -- 3) intervalo entre casos de teste
+        wait for 2*bitPeriod;
+      elsif casos_teste(i).id = 7 then
+        assert false report "Caso de teste " & integer'image(casos_teste(i).id) severity note;
+        serialData <= casos_teste(i).data; -- caso de teste "i"
+        wait for 10*clockPeriod;
+
+        -- 1) envia bits seriais para circuito de recepcao
+        UART_WRITE_BYTE_EXTRA_CASE ( Data_In=>serialData, Serial_Out=>entrada_serial_in, id=>casos_teste(i).id, Reset=>reset_in, Recebe=>recebe_in );
+        entrada_serial_in <= '1'; -- repouso
+        wait for bitPeriod;
+
+        reset_in <= '0';
+
+        -- 2) simula recebimento do dado (p.ex. circuito principal registra saida)
+        wait until falling_edge(clock_in);
+        recebe_in <= '1', '0' after 2*clockPeriod;
+
+        -- 3) intervalo entre casos de teste
+        wait for 2*bitPeriod;
+      elsif casos_teste(i).id = 8 then
+        assert false report "Caso de teste " & integer'image(casos_teste(i).id) severity note;
+        serialData <= casos_teste(i).data; -- caso de teste "i"
+        wait for 10*clockPeriod;
+
+        -- 1) envia bits seriais para circuito de recepcao
+        UART_WRITE_BYTE_EXTRA_CASE ( Data_In=>serialData, Serial_Out=>entrada_serial_in, id=>casos_teste(i).id, Reset=>reset_in, Recebe=>recebe_in );
+        entrada_serial_in <= '1'; -- repouso
+        wait for bitPeriod;
+
+        -- 2) simula recebimento do dado (p.ex. circuito principal registra saida)
+        wait until falling_edge(clock_in);
+        recebe_in <= '1', '0' after 2*clockPeriod;
+
+        -- 3) intervalo entre casos de teste
+        wait for 2*bitPeriod;
+      else
         assert false report "Caso de teste " & integer'image(casos_teste(i).id) severity note;
         serialData <= casos_teste(i).data; -- caso de teste "i"
         wait for 10*clockPeriod;
@@ -134,6 +228,7 @@ begin
 
         -- 3) intervalo entre casos de teste
         wait for 2*bitPeriod;
+      end if;
     end loop;
 
     ---- final dos casos de teste da simulacao
