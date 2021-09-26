@@ -90,7 +90,7 @@ begin
   clock_in <= (not clock_in) and keep_simulating after clockPeriod/2;
  
   -- Instancia��o direta DUT (Device Under Test)
-  DUT: entity work.rx_serial_8N2 (estrutural)
+  DUT: entity work.rx_serial_8N2 (rx_serial_8N2_arch)
        port map (  
                  clock=>          clock_in, 
                  reset=>          reset_in,

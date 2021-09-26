@@ -14,7 +14,7 @@ entity rx_serial_8N2 is
     );
 end entity;
 
-architecture estrutural of rx_serial_8N2 is
+architecture rx_serial_8N2_arch of rx_serial_8N2 is
      
     component rx_serial_tick_uc port ( 
             clock, reset, dado, tick, fim, recebe_dado: in  std_logic;
