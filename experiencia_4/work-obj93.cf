@@ -1,0 +1,31 @@
+v 4
+file . "registrador_n.vhd" "5fc3bc0bfc23421c2cb59958478de4a4f852774c" "20210930135817.296":
+  entity registrador_n at 19( 953) + 0 on 29;
+  architecture registrador_n of registrador_n at 35( 1323) + 0 on 30;
+file . "interface_hcsr04_uc.vhd" "a766b26dbc234e96509d71a0ea2936e1bf47383a" "20210930135817.296":
+  entity interface_hcsr04_uc at 1( 0) + 0 on 27;
+  architecture interface_hcsr04_uc_arch of interface_hcsr04_uc at 12( 323) + 0 on 28;
+file . "interface_hcsr04_tb.vhd" "1ea5802a8b8d04181928bc7ee8f5c2d0c4415a78" "20210930142024.472":
+  entity interface_hcsr04_tb at 16( 701) + 0 on 41;
+  architecture tb of interface_hcsr04_tb at 22( 788) + 0 on 42;
+file . "interface_hcsr04_fd.vhd" "ce87a68515368af68b6588cc8d91d2e786e3ff2e" "20210930142354.095":
+  entity interface_hcsr04_fd at 1( 0) + 0 on 49;
+  architecture interface_hcsr04_fd_arch of interface_hcsr04_fd at 16( 410) + 0 on 50;
+file . "interface_hcsr04.vhd" "c6a19e7e6675eea14dcd5689cd200ae782aeb4f4" "20210930142305.107":
+  entity interface_hcsr04 at 1( 0) + 0 on 47;
+  architecture interface_hcsr04_arch of interface_hcsr04 at 24( 871) + 0 on 48;
+file . "hex7seg.vhd" "81ea2bd412e9f51aedf0c7434be1482e39b4cedf" "20210930135817.291":
+  entity hex7seg at 14( 569) + 0 on 19;
+  architecture comportamental of hex7seg at 24( 759) + 0 on 20;
+file . "gerador_pulso.vhd" "fdf880036ad853200b0c5aee73c6825fdc6b129e" "20210930140449.763":
+  entity gerador_pulso at 16( 657) + 0 on 31;
+  architecture fsm_arch of gerador_pulso at 34( 1036) + 0 on 32;
+file . "edge_detector.vhd" "fd2491f6333432110cb7cf13dc8cfaa897d02891" "20210930135817.290":
+  entity edge_detector at 17( 719) + 0 on 15;
+  architecture behavioral of edge_detector at 27( 946) + 0 on 16;
+file . "contadorg_m.vhd" "541eb88cb99f4f6e2db0819d1eb54b3fca86c225" "20210930135817.290":
+  entity contadorg_m at 19( 976) + 0 on 13;
+  architecture comportamental of contadorg_m at 35( 1388) + 0 on 14;
+file . "contador_bcd_4digitos.vhd" "e7699072a3140995932651722a2d155251cb9467" "20210930135817.288":
+  entity contador_bcd_4digitos at 18( 829) + 0 on 11;
+  architecture comportamental of contador_bcd_4digitos at 29( 1146) + 0 on 12;
