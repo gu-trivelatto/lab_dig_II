@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity tx_dados_sonar_uc is
     port (
-        clock, reset, transmitir, tick, fim : in std_logic;
+        clock, reset, transmitir, tick, fim, pronto_tx : in std_logic;
         pronto, transmite, zera, proximo : out std_logic;
         estado_hex : out std_logic_vector (3 downto 0)
     );
@@ -28,7 +28,7 @@ begin
     end process;
 
   -- logica de proximo estado
-    process (transmitir, tick, fim, Eatual) 
+    process (transmitir, tick, fim, pronto_tx, Eatual) 
     begin
 
       case Eatual is
@@ -44,10 +44,11 @@ begin
                                  else               Eprox <= final;
                                  end if;
 
-        when atualiza_dado =>    Eprox <= transmissao;
+        when atualiza_dado =>    if fim='1' then Eprox <= final;
+                                 else            Eprox <= transmissao;
+                                 end if;
 
-        when transmissao =>      if fim='0' then Eprox <= espera;
-                                 else            Eprox <= final;
+        when transmissao =>      if pronto_tx='0' then Eprox <= espera;
                                  end if;    
  
         when final =>            Eprox <= inicial;
