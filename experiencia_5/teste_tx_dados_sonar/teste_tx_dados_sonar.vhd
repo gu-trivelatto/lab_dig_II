@@ -58,7 +58,7 @@ begin
 
     ED: edge_detector port map (clock, s_enviar, s_enviar_ed);
 
-    TX: tx_dados_sonar port map (clock, s_reset, s_enviar_ed, "0001", "0101", "0011", "0000", "0001", "0111", s_saida_serial, s_pronto,
+    TX: tx_dados_sonar port map (clock, s_reset, s_enviar_ed, "0011", "0101", "0001", "0111", "0001", "0000", s_saida_serial, s_pronto,
                                  db_enviar, open, db_estado, open, open, open, open, open, open, db_reset);
 
     saida_serial <= s_saida_serial;
