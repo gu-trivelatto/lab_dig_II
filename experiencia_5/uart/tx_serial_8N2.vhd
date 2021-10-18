@@ -41,7 +41,7 @@ architecture tx_serial_8N2_arch of tx_serial_8N2 is
     );
     end component;
     
-    signal s_reset, s_partida, s_partida_ed: std_logic;
+    signal s_reset, s_partida: std_logic;
     signal s_zera, s_conta, s_carrega, s_desloca, s_tick, s_fim: std_logic;
     signal s_db_estado : std_logic_vector (3 downto 0);
 
@@ -52,7 +52,7 @@ begin
     s_partida <= partida;
 
     -- unidade de controle
-    U1_UC: tx_serial_tick_uc port map (clock, s_reset, s_partida_ed, s_tick, s_fim,
+    U1_UC: tx_serial_tick_uc port map (clock, s_reset, s_partida, s_tick, s_fim,
                                        s_zera, s_conta, s_carrega, s_desloca, pronto, s_db_estado);
 
     -- fluxo de dados

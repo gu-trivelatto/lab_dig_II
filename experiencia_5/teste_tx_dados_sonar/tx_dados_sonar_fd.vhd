@@ -100,7 +100,7 @@ begin
     s_transmite <= transmite;
     s_proximo <= proximo;
 
-    MUX: mux_8x1_n generic map (BITS => 8) port map (s_angulo2, s_angulo1, s_angulo0, s_virgula, s_distancia2, s_distancia1, s_distancia0, s_ponto, s_posicao, s_mux_out); 
+    MUX: mux_8x1_n generic map (BITS => 8) port map (s_angulo0, s_angulo1, s_angulo2, s_virgula, s_distancia0, s_distancia1, s_distancia2, s_ponto, s_posicao, s_mux_out); 
 
     UART: uart_8N2 port map (clock, s_reset, s_transmite, s_mux_out, '0', '0', s_saida_serial, pronto, open, open, open,
                              open, open, open, open, open, open, open, open, open, open, open, open);

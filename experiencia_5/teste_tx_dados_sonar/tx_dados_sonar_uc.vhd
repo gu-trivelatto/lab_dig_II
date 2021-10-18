@@ -11,7 +11,7 @@ end entity;
 
 architecture tx_dados_sonar_uc_arch of tx_dados_sonar_uc is
 
-    type tipo_estado is (inicial, preparacao, espera, atualiza_dado, transmissao, final);
+    type tipo_estado is (inicial, preparacao, espera, atualiza_dado, transmissao, testa_fim, final);
     signal Eatual: tipo_estado;  -- estado atual
     signal Eprox:  tipo_estado;  -- proximo estado
 
@@ -39,18 +39,19 @@ begin
 
         when preparacao =>       Eprox <= espera;
 
-        when espera =>           if tick='1' then   Eprox <= atualiza_dado;
-                                 elsif fim='0' then Eprox <= espera;
-                                 else               Eprox <= final;
+        when espera =>           if tick='1' then   Eprox <= transmissao;
+                                 else               Eprox <= espera;
                                  end if;
 
-        when atualiza_dado =>    if fim='1' then Eprox <= final;
-                                 else            Eprox <= transmissao;
+        when transmissao =>      if pronto_tx='1' then Eprox <= testa_fim;
+                                 end if; 
+
+        when testa_fim =>        if fim='1' then Eprox <= final;
+                                 else            Eprox <= atualiza_dado;
                                  end if;
 
-        when transmissao =>      if pronto_tx='0' then Eprox <= espera;
-                                 end if;    
- 
+        when atualiza_dado =>    Eprox <= espera;
+
         when final =>            Eprox <= inicial;
 
         when others =>           Eprox <= inicial;
@@ -79,9 +80,10 @@ begin
             when inicial => estado_hex <= "0000";
             when preparacao => estado_hex <= "0001";
             when espera => estado_hex <= "0010";
-            when atualiza_dado => estado_hex <= "0011";
-            when transmissao => estado_hex <= "0100";
-            when final => estado_hex <= "0101";
+            when transmissao => estado_hex <= "0011";
+            when testa_fim => estado_hex <= "0100";
+            when atualiza_dado => estado_hex <= "0101";            
+            when final => estado_hex <= "0110";
             when others => estado_hex <= "1111";
         end case;
     end process;
