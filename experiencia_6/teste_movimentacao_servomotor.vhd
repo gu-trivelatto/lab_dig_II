@@ -70,7 +70,7 @@ begin
 
     CS: controle_servo_3 port map (clock, s_reset, s_posicao, s_pwm, open, s_db_pwm, open, open);
 
-    ONE_SEC: contadorg_m generic map (M => 5000000) port map (clock, s_reset, '0', s_ligar, open, s_fim, open);
+    ONE_SEC: contadorg_m generic map (M => 100000000) port map (clock, s_reset, '0', s_ligar, open, s_fim, open);
 
     UPDOWN: contadorg_updown_m generic map (M => 8) port map (clock, s_reset, '0', s_fim, s_posicao, open, open, open);
 

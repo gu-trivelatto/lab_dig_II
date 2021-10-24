@@ -23,19 +23,19 @@ architecture tx_dados_sonar_arch of tx_dados_sonar is
 
     component tx_dados_sonar_fd
         port (
-            clock: in std_logic;
-            reset: in std_logic;
-            transmite: in std_logic;
-			proximo: in std_logic;
-            angulo2: in std_logic_vector(7 downto 0); -- digitos BCD
-            angulo1: in std_logic_vector(7 downto 0); -- de angulo
-            angulo0: in std_logic_vector(7 downto 0);
-            distancia2: in std_logic_vector(3 downto 0); -- e de distancia
-            distancia1: in std_logic_vector(3 downto 0);
-            distancia0: in std_logic_vector(3 downto 0);
-            saida_serial: out std_logic;
-            fim: out std_logic;
-            pronto: out std_logic
+				clock: in std_logic;
+				reset: in std_logic;
+				transmite: in std_logic;
+				proximo: in std_logic;
+				angulo2: in std_logic_vector(7 downto 0); -- digitos BCD
+				angulo1: in std_logic_vector(7 downto 0); -- de angulo
+				angulo0: in std_logic_vector(7 downto 0);
+				distancia2: in std_logic_vector(3 downto 0); -- e de distancia
+				distancia1: in std_logic_vector(3 downto 0);
+				distancia0: in std_logic_vector(3 downto 0);
+				saida_serial: out std_logic;
+				fim: out std_logic;
+				pronto: out std_logic
         );
     end component;
 
@@ -65,7 +65,8 @@ architecture tx_dados_sonar_arch of tx_dados_sonar is
     end component;
 
     signal s_reset, s_transmitir, s_saida_serial, s_pronto, s_fim, s_tick, s_zera, s_transmite, s_proximo, s_pronto_tx : std_logic;
-    signal s_angulo2, s_angulo1, s_angulo0, s_distancia2, s_distancia1, s_distancia0, s_db_estado : std_logic_vector (3 downto 0);
+    signal s_angulo2, s_angulo1, s_angulo0 : std_logic_vector (7 downto 0);
+	 signal s_distancia2, s_distancia1, s_distancia0, s_db_estado : std_logic_vector (3 downto 0);
 
 begin
 

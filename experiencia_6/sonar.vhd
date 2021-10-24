@@ -10,8 +10,9 @@ entity sonar is
         trigger: out std_logic;
         pwm: out std_logic;
         saida_serial: out std_logic;
-        alerta_proximidade: out std_logic
+        alerta_proximidade: out std_logic;
         -- fazer sinais de db
+		  db_estado: out std_logic_vector (3 downto 0)
     );
 end entity;
 
@@ -24,7 +25,8 @@ architecture sonar_arch of sonar is
         medida_pronto: in std_logic;
         tx_pronto: in std_logic;
         transmitir: out std_logic;
-        ligar_sonar: out std_logic
+        ligar_sonar: out std_logic;
+		  estado_hex: out std_logic_vector (3 downto 0)
     );
     end component;
 
@@ -38,6 +40,7 @@ architecture sonar_arch of sonar is
         pwm: out std_logic;
         saida_serial: out std_logic;
         medida_pronto: out std_logic;
+		  tx_pronto: out std_logic;
         alerta_proximidade: out std_logic
     );
     end component;
@@ -58,13 +61,13 @@ begin
     s_echo <= echo;
 
     UC: sonar_uc port map(clock, s_reset, s_ligar, s_medida_pronto, s_tx_pronto,
-                          s_transmitir, s_ligar_sonar);
+                          s_transmitir, s_ligar_sonar, db_estado);
 
     FD: sonar_fd port map(clock, s_reset, s_ligar_sonar, s_echo, s_transmitir,
-                          s_trigger, s_pwm, s_saida_serial, s_medida_pronto, alerta_proximidade);
+                          s_trigger, s_pwm, s_saida_serial, s_medida_pronto, s_tx_pronto, alerta_proximidade);
 
     trigger <= s_trigger;
     pwm <= s_pwm;
     saida_serial <= s_saida_serial;
 
-end architecture
+end architecture;

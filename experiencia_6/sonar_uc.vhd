@@ -9,7 +9,8 @@ entity sonar_uc is
         medida_pronto: in std_logic;
         tx_pronto: in std_logic;
         transmitir: out std_logic;
-        ligar_sonar: out std_logic
+        ligar_sonar: out std_logic;
+		  estado_hex: out std_logic_vector (3 downto 0)
     );
 end entity;
 
@@ -43,12 +44,12 @@ begin
 
         when mede =>             if ligar='0'            then Eprox <= inicial;
                                  elsif medida_pronto='1' then Eprox <= transmite;
-                                 else                         Eprox <= ligado;
+                                 else                         Eprox <= mede;
                                  end if;
 
         when transmite =>        if ligar='0'        then Eprox <= inicial;
                                  elsif tx_pronto='1' then Eprox <= mede;
-                                 else                then Eprox <= transmite;
+                                 else                     Eprox <= transmite;
                                  end if;
 
         when others =>           Eprox <= inicial;
@@ -76,4 +77,4 @@ begin
     end process;
 
 
-end architecture
+end architecture;

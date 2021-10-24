@@ -57,7 +57,8 @@ architecture sonar_fd_arch of sonar_fd is
     signal s_reset, s_ligar, s_echo, s_trigger, s_pwm : std_logic;
     signal s_transmitir, s_saida_serial, s_tx_pronto, s_medida_pronto : std_logic;
     signal s_posicao: std_logic_vector (2 downto 0);
-    signal s_distancia: std_logic_vector (11 downto 0); 
+    signal s_distancia: std_logic_vector (11 downto 0);
+	 signal s_angulo: std_logic_vector (23 downto 0); 
 
 begin
 
@@ -85,12 +86,12 @@ begin
     process (s_distancia)
     begin
         if s_distancia(11 downto 8) > "0000" then
-            alerta_proximidade='1';
+            alerta_proximidade <= '1';
         elsif s_distancia(7 downto 4) > "0001" then
-            alerta_proximidade='1';
+            alerta_proximidade <= '1';
         else
-            alerta_proximidade='0';
+            alerta_proximidade <= '0';
         end if;
     end process;
 
-end architecture
+end architecture;
