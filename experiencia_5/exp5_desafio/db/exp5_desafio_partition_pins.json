@@ -1,0 +1,169 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "trigger",
+					"strict" : false
+				},
+				{
+					"name" : "pwm",
+					"strict" : false
+				},
+				{
+					"name" : "distancia0[0]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia0[1]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia0[2]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia0[3]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia0[4]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia0[5]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia0[6]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia2[1]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "distancia2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "db_estado[0]",
+					"strict" : false
+				},
+				{
+					"name" : "db_estado[2]",
+					"strict" : false
+				},
+				{
+					"name" : "db_estado[3]",
+					"strict" : false
+				},
+				{
+					"name" : "db_estado[4]",
+					"strict" : false
+				},
+				{
+					"name" : "db_estado[5]",
+					"strict" : false
+				},
+				{
+					"name" : "db_estado[6]",
+					"strict" : false
+				},
+				{
+					"name" : "db_posicao[0]",
+					"strict" : false
+				},
+				{
+					"name" : "db_posicao[1]",
+					"strict" : false
+				},
+				{
+					"name" : "db_posicao[2]",
+					"strict" : false
+				},
+				{
+					"name" : "db_posicao[3]",
+					"strict" : false
+				},
+				{
+					"name" : "db_posicao[4]",
+					"strict" : false
+				},
+				{
+					"name" : "db_posicao[5]",
+					"strict" : false
+				},
+				{
+					"name" : "db_posicao[6]",
+					"strict" : false
+				},
+				{
+					"name" : "clock",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "ligar",
+					"strict" : false
+				},
+				{
+					"name" : "echo",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

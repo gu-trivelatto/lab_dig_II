@@ -33,7 +33,6 @@ architecture exp5_desafio_arch of exp5_desafio is
         echo: in std_logic;
         trigger: out std_logic;
         pwm: out std_logic;
-		  fim_girar: out std_logic;
         posicao: out std_logic_vector(2 downto 0);
         distancia: out std_logic_vector(11 downto 0);
         medida_pronto: out std_logic
@@ -41,9 +40,9 @@ architecture exp5_desafio_arch of exp5_desafio is
     end component;
 
     component exp5_desafio_uc port(
-        clock, reset, ligar, medida_pronto, fim_girar : in  std_logic;
-        gira, mede :                                    out std_logic;
-        estado_hex :                                    out std_logic_vector (3 downto 0)
+        clock, reset, ligar, medida_pronto : in  std_logic;
+        gira, mede :                         out std_logic;
+        estado_hex :                         out std_logic_vector (3 downto 0)
     );
     end component;
 
@@ -53,7 +52,7 @@ architecture exp5_desafio_arch of exp5_desafio is
     );
     end component;
 
-    signal s_reset, s_ligar, s_echo, s_trigger, s_girar, s_medir, s_pwm, s_medida_pronto, s_fim_girar : std_logic;
+    signal s_reset, s_ligar, s_echo, s_trigger, s_girar, s_medir, s_pwm, s_medida_pronto : std_logic;
     signal s_posicao : std_logic_vector (2 downto 0);
     signal s_posicao_4bits : std_logic_vector (3 downto 0);
     signal s_distancia : std_logic_vector (11 downto 0); 
@@ -65,9 +64,9 @@ begin
     s_ligar <= ligar;
     s_echo <= echo;
 
-    FD: exp5_desafio_fd port map(clock, s_reset, s_girar, s_medir, s_echo, s_trigger, s_pwm, s_fim_girar, s_posicao, s_distancia, s_medida_pronto);
+    FD: exp5_desafio_fd port map(clock, s_reset, s_girar, s_medir, s_echo, s_trigger, s_pwm, s_posicao, s_distancia, s_medida_pronto);
 
-    UC: exp5_desafio_uc port map(clock, s_reset, s_ligar, s_medida_pronto, s_fim_girar, s_girar, s_medir, s_estado);
+    UC: exp5_desafio_uc port map(clock, s_reset, s_ligar, s_medida_pronto, s_girar, s_medir, s_estado);
 
     SSEG_POS: hex7seg port map(s_posicao_4bits, db_posicao);
 

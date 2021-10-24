@@ -1,0 +1,31 @@
+Quartus Prime Archive log --	C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/exp5_desafio.qarlog
+
+Archive:	C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/exp5_desafio.qar
+Date:		Fri Oct 22 15:16:36 2021
+Quartus Prime		16.1.0 Build 196 10/24/2016 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/contador_bcd_4digitos.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/contadorg_m.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/contadorg_updown_m.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/controle_servo_3.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/controle_servo_3_tb.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/edge_detector.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/exp5_desafio.qpf
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/exp5_desafio.qsf
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/exp5_desafio.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/exp5_desafio_fd.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/exp5_desafio_tb.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/exp5_desafio_uc.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/gerador_pulso.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/hex7seg.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/interface_hcsr04.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/interface_hcsr04_fd.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/interface_hcsr04_uc.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/registrador_n.vhd
+C:/Users/mypc/Documents/LabDigII-T3BB1/experiencia_5/exp5_desafio/teste_movimentacao_servomotor.vhd
+c:/intelfpga_lite/16.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 20 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

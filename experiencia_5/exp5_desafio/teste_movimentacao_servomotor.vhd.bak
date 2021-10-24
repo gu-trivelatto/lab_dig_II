@@ -6,7 +6,7 @@ use IEEE.math_real.all;
 entity teste_movimentacao_servomotor is
 port (
     clock, ligar, reset : in std_logic;
-    pwm, fim : out std_logic;
+    pwm : out std_logic;
     posicao, slider : out std_logic_vector (2 downto 0)
 );
 end teste_movimentacao_servomotor;
@@ -74,10 +74,14 @@ begin
 
     UPDOWN: contadorg_updown_m generic map (M => 8) port map (clock, s_reset, '0', s_fim, s_posicao, open, open, open);
 
+    SSEG: hex7seg port map (s_posicao_4_bits, db_posicao_sseg);
+
     slider <= s_posicao;
     posicao <= s_posicao;
     pwm <= s_pwm;
-	 fim <= s_fim;
+    db_ligar <= ligar;
+    db_reset <= reset;
+    db_pwm <= s_pwm;
 
 
 end architecture;

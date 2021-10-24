@@ -1,0 +1,22 @@
+
+State Machine - |exp5_desafio|exp5_desafio_uc:UC|Eatual
+Name Eatual.girar Eatual.aguarda_medida Eatual.medicao Eatual.inicial 
+Eatual.inicial 0 0 0 0 
+Eatual.medicao 0 0 1 1 
+Eatual.aguarda_medida 0 1 0 1 
+Eatual.girar 1 0 0 1 
+
+State Machine - |exp5_desafio|exp5_desafio_fd:FD|interface_hcsr04:HCSR|interface_hcsr04_fd:U2_FD|gerador_pulso:U4|reg_estado
+Name reg_estado.final reg_estado.contagem reg_estado.parado 
+reg_estado.parado 0 0 0 
+reg_estado.contagem 0 1 1 
+reg_estado.final 1 0 1 
+
+State Machine - |exp5_desafio|exp5_desafio_fd:FD|interface_hcsr04:HCSR|interface_hcsr04_uc:U1_UC|Eatual
+Name Eatual.fim_medida Eatual.medida Eatual.espera_echo Eatual.trigger Eatual.preparacao Eatual.inicial 
+Eatual.inicial 0 0 0 0 0 0 
+Eatual.preparacao 0 0 0 0 1 1 
+Eatual.trigger 0 0 0 1 0 1 
+Eatual.espera_echo 0 0 1 0 0 1 
+Eatual.medida 0 1 0 0 0 1 
+Eatual.fim_medida 1 0 0 0 0 1 

@@ -1,15 +1,15 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity exp5_desafio_uc is 
+entity interface_hcsr04_uc is 
     port ( 
-        clock, reset, ligar, medida_pronto, fim_girar : in  std_logic;
-        gira, mede :                         			  out std_logic;
-        estado_hex :                         			  out std_logic_vector (3 downto 0)
+        clock, reset, ligar, medida_pronto : in  std_logic;
+        gira, mede :                         out std_logic;
+        estado_hex :                         out std_logic_vector (3 downto 0)
     );
 end entity;
 
-architecture exp5_desafio_uc_arch of exp5_desafio_uc is
+architecture interface_hcsr04_uc_arch of interface_hcsr04_uc is
 
     type tipo_estado is (inicial, medicao, aguarda_medida, girar);
     signal Eatual: tipo_estado;  -- estado atual
@@ -28,7 +28,7 @@ begin
     end process;
 
   -- logica de proximo estado
-    process (ligar, medida_pronto, fim_girar, Eatual) 
+    process (ligar, medida_pronto, Eatual) 
     begin
 
       case Eatual is
@@ -47,9 +47,7 @@ begin
                                  else                      Eprox <= aguarda_medida;
                                  end if;
 
-        when girar =>            if fim_girar='1' then Eprox <= inicial;
-											else						 Eprox <= girar;
-											end if;
+        when girar =>            Eprox <= inicial;
 
         when others =>           Eprox <= inicial;
 
@@ -77,4 +75,4 @@ begin
     end process;
 
 
-end exp5_desafio_uc_arch;
+end interface_hcsr04_uc_arch;
