@@ -3,9 +3,9 @@ use ieee.std_logic_1164.all;
 
 entity servo_medida_uc is 
     port ( 
-        clock, reset, ligar, medida_pronto : in  std_logic;
-        gira, mede :                         out std_logic;
-        estado_hex :                         out std_logic_vector (3 downto 0)
+        clock, reset, ligar, medida_pronto, fim_girar : in  std_logic;
+        gira, mede :                         			  out std_logic;
+        estado_hex :                         			  out std_logic_vector (3 downto 0)
     );
 end entity;
 
@@ -28,7 +28,7 @@ begin
     end process;
 
   -- logica de proximo estado
-    process (ligar, medida_pronto, Eatual) 
+    process (ligar, medida_pronto, fim_girar, Eatual) 
     begin
 
       case Eatual is
@@ -47,7 +47,9 @@ begin
                                  else                      Eprox <= aguarda_medida;
                                  end if;
 
-        when girar =>            Eprox <= inicial;
+        when girar =>            if fim_girar='1' then Eprox <= inicial;
+											else						 Eprox <= girar;
+											end if;
 
         when others =>           Eprox <= inicial;
 
