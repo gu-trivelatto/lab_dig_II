@@ -14,7 +14,8 @@ entity servo_medida_fd is
         pwm: out std_logic;
         posicao: out std_logic_vector(2 downto 0);
         distancia: out std_logic_vector(11 downto 0);
-        medida_pronto: out std_logic
+        medida_pronto: out std_logic;
+        db_estado_hscr04: out std_logic_vector(3 downto 0)
     );
 end entity;
 
@@ -40,6 +41,7 @@ architecture servo_medida_fd_arch of servo_medida_fd is
     signal s_reset, s_girar, s_echo, s_medir, s_trigger, s_pronto, s_pwm : std_logic;
     signal s_posicao : std_logic_vector (2 downto 0);
     signal s_distancia : std_logic_vector (11 downto 0);
+    signal s_estado_hscr04 : std_logic_vector (3 downto 0);
 
 begin
 
@@ -48,7 +50,7 @@ begin
     s_echo <= echo;
     s_medir <= medir;
 
-    HCSR: interface_hcsr04 port map(clock, s_reset, s_medir, s_echo, s_trigger, s_distancia, s_pronto, open);
+    HCSR: interface_hcsr04 port map(clock, s_reset, s_medir, s_echo, s_trigger, s_distancia, s_pronto, s_estado_hscr04);
 
     SERVO: teste_movimentacao_servomotor port map(clock, s_girar, s_reset, s_pwm, s_posicao, open);
 
@@ -57,5 +59,6 @@ begin
     distancia <= s_distancia;
     medida_pronto <= s_pronto;
     pwm <= s_pwm;
+    db_estado_hscr04 <= s_estado_hscr04;
 
 end architecture;

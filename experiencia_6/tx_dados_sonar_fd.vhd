@@ -21,7 +21,9 @@ entity tx_dados_sonar_fd is
         dado_recebido: out std_logic_vector (7 downto 0);
         fim: out std_logic;
         pronto_tx: out std_logic;
-        pronto_rx: out std_logic
+        pronto_rx: out std_logic;
+		  db_dado_tx: out std_logic_vector (7 downto 0);
+        db_estado_tx, db_estado_rx: out std_logic_vector (3 downto 0)
     );
 end entity;
 
@@ -68,7 +70,10 @@ architecture tx_dados_sonar_fd_arch of tx_dados_sonar_fd is
             pronto_tx         : out std_logic;
             dado_recebido_rx  : out std_logic_vector (7 downto 0);
             tem_dado          : out std_logic;
-            pronto_rx         : out std_logic
+            pronto_rx         : out std_logic;
+            db_estado_tx      : out std_logic_vector (3 downto 0);
+            db_estado_rx      : out std_logic_vector (3 downto 0);
+            db_dado_tx        : out std_logic_vector (7 downto 0)
         );
     end component;
     
@@ -76,6 +81,8 @@ architecture tx_dados_sonar_fd_arch of tx_dados_sonar_fd is
     signal s_reset, s_transmite, s_fim, s_proximo, s_saida_serial, s_entrada_serial, s_recebe_dado, s_tem_dado : std_logic;
     signal s_posicao : std_logic_vector (2 downto 0);
     signal s_mux_out : std_logic_vector (7 downto 0);
+	 signal s_dado_tx: std_logic_vector (7 downto 0);
+    signal s_estado_tx, s_estado_rx : std_logic_vector (3 downto 0);
 
 begin
 
@@ -98,11 +105,14 @@ begin
                                                      s_distancia1, s_distancia2, s_ponto, s_posicao, s_mux_out); 
 
     UART: uart_8N2 port map (clock, s_reset, s_transmite, s_mux_out, s_entrada_serial, s_recebe_dado,
-                             s_saida_serial, pronto_tx, dado_recebido, s_tem_dado, pronto_rx);
+                             s_saida_serial, pronto_tx, dado_recebido, s_tem_dado, pronto_rx, s_estado_tx, s_estado_rx, s_dado_tx);
 
     CONT: contadorg_m generic map (M => 8) port map (clock, s_reset, '0', s_proximo, s_posicao, s_fim, open);
 
     saida_serial <= s_saida_serial;
     fim <= s_fim;
+    db_estado_tx <= s_estado_tx;
+    db_estado_rx <= s_estado_rx;
+    db_dado_tx <= s_dado_tx;
     
 end architecture;

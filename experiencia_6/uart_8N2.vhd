@@ -14,7 +14,10 @@ entity uart_8N2 is
         pronto_tx         : out std_logic;
         dado_recebido_rx  : out std_logic_vector (7 downto 0);
         tem_dado          : out std_logic;
-        pronto_rx         : out std_logic
+        pronto_rx         : out std_logic;
+        db_estado_tx      : out std_logic_vector (3 downto 0);
+        db_estado_rx      : out std_logic_vector (3 downto 0);
+        db_dado_tx        : out std_logic_vector (7 downto 0)
     );
 end entity;
 
@@ -76,5 +79,8 @@ begin
     dado_recebido_rx <= s_dado_recebido_rx;
     pronto_rx <= s_pronto_rx;
     tem_dado <= s_tem_dado;
+    db_estado_tx <= s_db_estado_tx_hex;
+    db_estado_rx <= s_db_estado_rx_hex;
+    db_dado_tx <= dados_ascii;
 
 end architecture;
