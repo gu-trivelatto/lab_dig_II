@@ -8,6 +8,8 @@ entity tx_dados_sonar is
         clock: in std_logic;
         reset: in std_logic;
         transmitir: in std_logic;
+        recebe_dado: in std_logic;
+        entrada_serial: in std_logic;
         angulo2: in std_logic_vector(7 downto 0); -- digitos BCD
         angulo1: in std_logic_vector(7 downto 0); -- de angulo
         angulo0: in std_logic_vector(7 downto 0);
@@ -15,7 +17,9 @@ entity tx_dados_sonar is
         distancia1: in std_logic_vector(3 downto 0);
         distancia0: in std_logic_vector(3 downto 0);
         saida_serial: out std_logic;
-        pronto: out std_logic
+        dado_recebido: out std_logic_vector (7 downto 0);
+        pronto: out std_logic;
+        pronto_rx: out std_logic
     );
 end entity;
 
@@ -23,19 +27,23 @@ architecture tx_dados_sonar_arch of tx_dados_sonar is
 
     component tx_dados_sonar_fd
         port (
-				clock: in std_logic;
-				reset: in std_logic;
-				transmite: in std_logic;
-				proximo: in std_logic;
-				angulo2: in std_logic_vector(7 downto 0); -- digitos BCD
-				angulo1: in std_logic_vector(7 downto 0); -- de angulo
-				angulo0: in std_logic_vector(7 downto 0);
-				distancia2: in std_logic_vector(3 downto 0); -- e de distancia
-				distancia1: in std_logic_vector(3 downto 0);
-				distancia0: in std_logic_vector(3 downto 0);
-				saida_serial: out std_logic;
-				fim: out std_logic;
-				pronto: out std_logic
+            clock: in std_logic;
+            reset: in std_logic;
+            transmite: in std_logic;
+            recebe_dado: in std_logic;
+            proximo: in std_logic;
+            angulo2: in std_logic_vector(7 downto 0); -- digitos BCD
+            angulo1: in std_logic_vector(7 downto 0); -- de angulo
+            angulo0: in std_logic_vector(7 downto 0);
+            distancia2: in std_logic_vector(3 downto 0); -- e de distancia
+            distancia1: in std_logic_vector(3 downto 0);
+            distancia0: in std_logic_vector(3 downto 0);
+            entrada_serial: in std_logic;
+            saida_serial: out std_logic;
+            dado_recebido: out std_logic_vector (7 downto 0);
+            fim: out std_logic;
+            pronto_tx: out std_logic;
+            pronto_rx: out std_logic
         );
     end component;
 
@@ -64,8 +72,8 @@ architecture tx_dados_sonar_arch of tx_dados_sonar is
     );
     end component;
 
-    signal s_reset, s_transmitir, s_saida_serial, s_pronto, s_fim, s_tick, s_zera, s_transmite, s_proximo, s_pronto_tx : std_logic;
-    signal s_angulo2, s_angulo1, s_angulo0 : std_logic_vector (7 downto 0);
+    signal s_reset, s_transmitir, s_saida_serial, s_pronto, s_fim, s_tick, s_zera, s_transmite, s_proximo, s_pronto_tx, s_recebe_dado, s_pronto_rx, s_entrada_serial : std_logic;
+    signal s_angulo2, s_angulo1, s_angulo0, s_dado_recebido : std_logic_vector (7 downto 0);
 	 signal s_distancia2, s_distancia1, s_distancia0, s_db_estado : std_logic_vector (3 downto 0);
 
 begin
@@ -79,8 +87,11 @@ begin
 
     s_reset <= reset;
     s_transmitir <= transmitir;
+    s_recebe_dado <= recebe_dado;
+    s_entrada_serial <= entrada_serial;
 
-    FD: tx_dados_sonar_fd port map (clock, s_zera, s_transmite, s_proximo, s_angulo2, s_angulo1, s_angulo0, s_distancia2, s_distancia1, s_distancia0, s_saida_serial, s_fim, s_pronto_tx); 
+    FD: tx_dados_sonar_fd port map (clock, s_zera, s_transmite, s_recebe_dado, s_proximo, s_angulo2, s_angulo1, s_angulo0, s_distancia2, s_distancia1, 
+                                    s_distancia0, s_entrada_serial, s_saida_serial, s_dado_recebido, s_fim, s_pronto_tx, s_pronto_rx); 
     
     UC: tx_dados_sonar_uc port map (clock, s_reset, s_transmitir, s_tick, s_fim, s_pronto_tx, s_pronto, s_transmite, s_zera, s_proximo, s_db_estado);
 
@@ -88,5 +99,7 @@ begin
 
     saida_serial <= s_saida_serial;
     pronto <= s_pronto;
+    dado_recebido <= s_dado_recebido;
+    pronto_rx <= s_pronto_rx;
 
 end architecture;

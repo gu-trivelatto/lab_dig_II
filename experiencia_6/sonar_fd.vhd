@@ -8,11 +8,15 @@ entity sonar_fd is
         ligar: in std_logic;
         echo: in std_logic;
         transmitir: in std_logic;
+        recebe_dado: in std_logic;
+        entrada_serial: in std_logic;
         trigger: out std_logic;
         pwm: out std_logic;
         saida_serial: out std_logic;
+        dado_recebido: out std_logic_vector (7 downto 0);
         medida_pronto: out std_logic;
         tx_pronto: out std_logic;
+        rx_pronto: out std_logic;
         alerta_proximidade: out std_logic
         -- SINAIS DE DEPURAÇÃO A SEREM ADICIONADOS
     );
@@ -43,6 +47,8 @@ architecture sonar_fd_arch of sonar_fd is
         clock: in std_logic;
         reset: in std_logic;
         transmitir: in std_logic;
+        recebe_dado: in std_logic;
+        entrada_serial: in std_logic;
         angulo2: in std_logic_vector(7 downto 0); -- digitos BCD
         angulo1: in std_logic_vector(7 downto 0); -- de angulo
         angulo0: in std_logic_vector(7 downto 0);
@@ -50,15 +56,18 @@ architecture sonar_fd_arch of sonar_fd is
         distancia1: in std_logic_vector(3 downto 0);
         distancia0: in std_logic_vector(3 downto 0);
         saida_serial: out std_logic;
-        pronto: out std_logic
+        dado_recebido: out std_logic_vector (7 downto 0);
+        pronto: out std_logic;
+        pronto_rx: out std_logic
     );
     end component;
 
-    signal s_reset, s_ligar, s_echo, s_trigger, s_pwm : std_logic;
+    signal s_reset, s_ligar, s_echo, s_trigger, s_pwm, s_entrada_serial, s_recebe_dado, s_rx_pronto : std_logic;
     signal s_transmitir, s_saida_serial, s_tx_pronto, s_medida_pronto : std_logic;
     signal s_posicao: std_logic_vector (2 downto 0);
     signal s_distancia: std_logic_vector (11 downto 0);
-	 signal s_angulo: std_logic_vector (23 downto 0); 
+	signal s_angulo: std_logic_vector (23 downto 0); 
+    signal s_dado_recebido: std_logic_vector (7 downto 0);
 
 begin
 
@@ -66,14 +75,16 @@ begin
     s_ligar <= ligar;
     s_echo <= echo;
     s_transmitir <= transmitir;
+    s_recebe_dado <= recebe_dado;
+    s_entrada_serial <= entrada_serial;
 
     SERVO: servo_medida port map(clock, s_reset, s_ligar, s_echo, s_trigger,
                                  s_pwm, s_posicao, s_distancia, s_medida_pronto);
 
-    TX: tx_dados_sonar port map(clock, s_reset, s_transmitir, s_angulo(23 downto 16),
-                                s_angulo(15 downto 8), s_angulo(7 downto 0), 
+    TX: tx_dados_sonar port map(clock, s_reset, s_transmitir, s_recebe_dado, s_entrada_serial,
+                                s_angulo(23 downto 16), s_angulo(15 downto 8), s_angulo(7 downto 0), 
                                 s_distancia(11 downto 8), s_distancia(7 downto 4), 
-                                s_distancia(3 downto 0), s_saida_serial, s_tx_pronto);
+                                s_distancia(3 downto 0), s_saida_serial, s_dado_recebido, s_tx_pronto, s_rx_pronto);
 
     ROM: rom_8x24 port map(s_posicao, s_angulo);
 
@@ -81,6 +92,8 @@ begin
     pwm <= s_pwm;
     saida_serial <= s_saida_serial;
     tx_pronto <= s_tx_pronto;
+    rx_pronto <= s_rx_pronto;
+    dado_recebido <= s_dado_recebido;
     medida_pronto <= s_medida_pronto;
 
     process (s_distancia)

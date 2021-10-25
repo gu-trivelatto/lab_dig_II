@@ -14,19 +14,7 @@ entity uart_8N2 is
         pronto_tx         : out std_logic;
         dado_recebido_rx  : out std_logic_vector (7 downto 0);
         tem_dado          : out std_logic;
-        pronto_rx         : out std_logic;
-        db_transmite_dado : out std_logic;
-        db_saida_serial   : out std_logic;
-        db_estado_tx      : out std_logic_vector (3 downto 0);
-        db_recebe_dado    : out std_logic;
-        db_dado_serial    : out std_logic;
-        db_estado_rx      : out std_logic_vector (3 downto 0);
-        db_tx_unidade     : out std_logic_vector (6 downto 0);
-        db_tx_decimal     : out std_logic_vector (6 downto 0);
-        db_rx_unidade     : out std_logic_vector (6 downto 0);
-        db_rx_decimal     : out std_logic_vector (6 downto 0);
-        db_estado_tx_sseg : out std_logic_vector (6 downto 0);
-        db_estado_rx_sseg : out std_logic_vector (6 downto 0)
+        pronto_rx         : out std_logic
     );
 end entity;
 
@@ -83,29 +71,10 @@ begin
 
     ED_RX: edge_detector port map (clock, s_recebe_dado, s_recebe_dado_ed);
 
-    ESTADO_TX: hex7seg port map (s_db_estado_tx_hex, db_estado_tx_sseg);
-
-    ESTADO_RX: hex7seg port map (s_db_estado_rx_hex, db_estado_rx_sseg);
-
-    TX_UNI: hex7seg port map (s_dados_ascii(3 downto 0), db_tx_unidade);
-
-    TX_DEC: hex7seg port map (s_dados_ascii(7 downto 4), db_tx_decimal);
-    
-    RX_UNI: hex7seg port map (s_dado_recebido_rx(3 downto 0), db_rx_unidade);
-    
-    RX_DEC: hex7seg port map (s_dado_recebido_rx(7 downto 4), db_rx_decimal);
-
     saida_serial <= s_saida_serial;
     pronto_tx <= s_pronto_tx;
     dado_recebido_rx <= s_dado_recebido_rx;
     pronto_rx <= s_pronto_rx;
     tem_dado <= s_tem_dado;
-
-    db_transmite_dado <= transmite_dado;
-    db_saida_serial <= s_saida_serial;
-    db_recebe_dado <= recebe_dado;
-    db_dado_serial <= dado_serial;
-    db_estado_tx <= s_db_estado_tx_hex;
-    db_estado_rx <= s_db_estado_rx_hex;
 
 end architecture;

@@ -8,6 +8,7 @@ entity tx_dados_sonar_fd is
         clock: in std_logic;
         reset: in std_logic;
         transmite: in std_logic;
+        recebe_dado: in std_logic;
         proximo: in std_logic;
         angulo2: in std_logic_vector(7 downto 0); -- digitos BCD
         angulo1: in std_logic_vector(7 downto 0); -- de angulo
@@ -15,9 +16,12 @@ entity tx_dados_sonar_fd is
         distancia2: in std_logic_vector(3 downto 0); -- e de distancia
         distancia1: in std_logic_vector(3 downto 0);
         distancia0: in std_logic_vector(3 downto 0);
+        entrada_serial: in std_logic;
         saida_serial: out std_logic;
+        dado_recebido: out std_logic_vector (7 downto 0);
         fim: out std_logic;
-        pronto: out std_logic
+        pronto_tx: out std_logic;
+        pronto_rx: out std_logic
     );
 end entity;
 
@@ -64,24 +68,12 @@ architecture tx_dados_sonar_fd_arch of tx_dados_sonar_fd is
             pronto_tx         : out std_logic;
             dado_recebido_rx  : out std_logic_vector (7 downto 0);
             tem_dado          : out std_logic;
-            pronto_rx         : out std_logic;
-            db_transmite_dado : out std_logic;
-            db_saida_serial   : out std_logic;
-            db_estado_tx      : out std_logic_vector (3 downto 0);
-            db_recebe_dado    : out std_logic;
-            db_dado_serial    : out std_logic;
-            db_estado_rx      : out std_logic_vector (3 downto 0);
-            db_tx_unidade     : out std_logic_vector (6 downto 0);
-            db_tx_decimal     : out std_logic_vector (6 downto 0);
-            db_rx_unidade     : out std_logic_vector (6 downto 0);
-            db_rx_decimal     : out std_logic_vector (6 downto 0);
-            db_estado_tx_sseg : out std_logic_vector (6 downto 0);
-            db_estado_rx_sseg : out std_logic_vector (6 downto 0)
+            pronto_rx         : out std_logic
         );
     end component;
     
     signal s_angulo0, s_angulo1, s_angulo2, s_distancia0, s_distancia1, s_distancia2, s_virgula, s_ponto : std_logic_vector (7 downto 0);
-    signal s_reset, s_transmite, s_fim, s_proximo, s_saida_serial : std_logic;
+    signal s_reset, s_transmite, s_fim, s_proximo, s_saida_serial, s_entrada_serial, s_recebe_dado, s_tem_dado : std_logic;
     signal s_posicao : std_logic_vector (2 downto 0);
     signal s_mux_out : std_logic_vector (7 downto 0);
 
@@ -99,11 +91,14 @@ begin
     s_reset <= reset;
     s_transmite <= transmite;
     s_proximo <= proximo;
+    s_recebe_dado <= recebe_dado;
+    s_entrada_serial <= entrada_serial;
 
-    MUX: mux_8x1_n generic map (BITS => 8) port map (s_angulo0, s_angulo1, s_angulo2, s_virgula, s_distancia0, s_distancia1, s_distancia2, s_ponto, s_posicao, s_mux_out); 
+    MUX: mux_8x1_n generic map (BITS => 8) port map (s_angulo0, s_angulo1, s_angulo2, s_virgula, s_distancia0, 
+                                                     s_distancia1, s_distancia2, s_ponto, s_posicao, s_mux_out); 
 
-    UART: uart_8N2 port map (clock, s_reset, s_transmite, s_mux_out, '0', '0', s_saida_serial, pronto, open, open, open,
-                             open, open, open, open, open, open, open, open, open, open, open, open);
+    UART: uart_8N2 port map (clock, s_reset, s_transmite, s_mux_out, s_entrada_serial, s_recebe_dado,
+                             s_saida_serial, pronto_tx, dado_recebido, s_tem_dado, pronto_rx);
 
     CONT: contadorg_m generic map (M => 8) port map (clock, s_reset, '0', s_proximo, s_posicao, s_fim, open);
 
