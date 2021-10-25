@@ -24,7 +24,8 @@ entity sonar_fd is
         db_posicao: out std_logic_vector (3 downto 0);
 		  db_dado_tx: out std_logic_vector (7 downto 0);
         db_estado_tx_dados_sonar, db_estado_tx, db_estado_rx: out std_logic_vector (3 downto 0);
-        db_estado_hscr04: out std_logic_vector(3 downto 0)
+        db_estado_hscr04: out std_logic_vector(3 downto 0);
+		  db_girar: out std_logic
     );
 end entity;
 
@@ -40,7 +41,8 @@ architecture sonar_fd_arch of sonar_fd is
         posicao: out std_logic_vector(2 downto 0);
         distancia: out std_logic_vector(11 downto 0);
         medida_pronto: out std_logic;
-        db_estado_hscr04: out std_logic_vector(3 downto 0)
+        db_estado_hscr04: out std_logic_vector(3 downto 0);
+		  db_girar: out std_logic
     );
     end component;
 
@@ -72,7 +74,7 @@ architecture sonar_fd_arch of sonar_fd is
     end component;
 
     signal s_reset, s_ligar, s_echo, s_trigger, s_pwm, s_entrada_serial, s_recebe_dado, s_rx_pronto : std_logic;
-    signal s_transmitir, s_saida_serial, s_tx_pronto, s_medida_pronto : std_logic;
+    signal s_transmitir, s_saida_serial, s_tx_pronto, s_medida_pronto, s_girar : std_logic;
     signal s_posicao: std_logic_vector (2 downto 0);
     signal s_distancia: std_logic_vector (11 downto 0);
 	signal s_angulo: std_logic_vector (23 downto 0); 
@@ -91,12 +93,12 @@ begin
     s_entrada_serial <= entrada_serial;
 
     SERVO: servo_medida port map(clock, s_reset, s_ligar, s_echo, s_trigger,
-                                 s_pwm, s_posicao, s_distancia, s_medida_pronto, s_estado_hscr04);
+                                 s_pwm, s_posicao, s_distancia, s_medida_pronto, s_estado_hscr04, s_girar);
 
     TX: tx_dados_sonar port map(clock, s_reset, s_transmitir, s_recebe_dado, s_entrada_serial,
-                                s_angulo(23 downto 16), s_angulo(15 downto 8), s_angulo(7 downto 0), 
-                                s_distancia(11 downto 8), s_distancia(7 downto 4), 
-                                s_distancia(3 downto 0), s_saida_serial, s_dado_recebido, s_tx_pronto, s_rx_pronto,
+                                s_angulo(7 downto 0), s_angulo(15 downto 8), s_angulo(23 downto 16), 
+                                s_distancia(3 downto 0), s_distancia(7 downto 4), 
+                                s_distancia(11 downto 8), s_saida_serial, s_dado_recebido, s_tx_pronto, s_rx_pronto,
                                 s_dado_tx, s_estado_tx_dados_sonar, s_estado_tx, s_estado_rx);
 
     ROM: rom_8x24 port map(s_posicao, s_angulo);
@@ -116,13 +118,16 @@ begin
     db_dado_tx <= s_dado_tx;
     db_estado_tx_dados_sonar <= s_estado_tx_dados_sonar;
     db_estado_hscr04 <= s_estado_hscr04;
+	 db_girar <= s_girar;
 
     process (s_distancia)
-    begin
-        if s_distancia(11 downto 8) > "0000" then
-            alerta_proximidade <= '1';
-        elsif s_distancia(7 downto 4) > "0001" then
-            alerta_proximidade <= '1';
+    begin 
+        if s_distancia(7 downto 4) < "0010" then
+            if s_distancia(11 downto 8) < "0001" then
+					alerta_proximidade <= '1';
+				else
+					alerta_proximidade <= '0';
+				end if;
         else
             alerta_proximidade <= '0';
         end if;

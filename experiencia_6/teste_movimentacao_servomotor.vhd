@@ -6,7 +6,7 @@ use IEEE.math_real.all;
 entity teste_movimentacao_servomotor is
 port (
     clock, ligar, reset : in std_logic;
-    pwm : out std_logic;
+    pwm, fim : out std_logic;
     posicao, slider : out std_logic_vector (2 downto 0)
 );
 end teste_movimentacao_servomotor;
@@ -77,6 +77,7 @@ begin
     slider <= s_posicao;
     posicao <= s_posicao;
     pwm <= s_pwm;
+	 fim <= s_fim;
 
 
 end architecture;

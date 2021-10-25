@@ -14,9 +14,14 @@ entity sonar is
         saida_serial: out std_logic;
         alerta_proximidade: out std_logic;
         -- fazer sinais de db
-		db_estado: out std_logic_vector (3 downto 0);
         selector: in std_logic_vector (1 downto 0);
-        sseg_1, sseg_2, sseg_3, sseg_4, sseg_5, sseg_6 : out std_logic_vector (6 downto 0)
+        sseg_1, sseg_2, sseg_3, sseg_4, sseg_5, sseg_6 : out std_logic_vector (6 downto 0);
+		  db_reset, db_ligar: out std_logic;
+		  db_selector: out std_logic_vector (1 downto 0);
+		  db_girar: out std_logic;
+		  db_saida_serial, db_recebe_dado, db_ligar_sonar: out std_logic;
+		  scope_pwm, scope_saida_serial: out std_logic;
+		  db_alerta_proximidade: out std_logic
     );
 end entity;
 
@@ -55,7 +60,8 @@ architecture sonar_arch of sonar is
         db_posicao: out std_logic_vector (3 downto 0);
 		  db_dado_tx: out std_logic_vector (7 downto 0);
         db_estado_tx_dados_sonar, db_estado_tx, db_estado_rx: out std_logic_vector (3 downto 0);
-        db_estado_hscr04: out std_logic_vector(3 downto 0)
+        db_estado_hscr04: out std_logic_vector(3 downto 0);
+		  db_girar: out std_logic
     );
     end component;
 
@@ -80,7 +86,7 @@ architecture sonar_arch of sonar is
     end component;
 
     signal s_reset, s_ligar, s_echo, s_trigger, s_pwm, s_saida_serial, s_alerta_proximidade, s_rx_pronto, s_entrada_serial, s_recebe_dado : std_logic;
-    signal s_medida_pronto, s_tx_pronto, s_transmitir, s_ligar_sonar : std_logic;
+    signal s_medida_pronto, s_tx_pronto, s_transmitir, s_ligar_sonar, s_girar : std_logic;
     signal s_dado_tx, s_dado_recebido : std_logic_vector (7 downto 0);
     signal hex1, hex2, hex3, hex4, hex5, hex6 : std_logic_vector (3 downto 0);
     signal s_db_estado, s_db_posicao : std_logic_vector (3 downto 0);
@@ -101,8 +107,8 @@ begin
                           s_transmitir, s_ligar_sonar, s_db_estado);
 
     FD: sonar_fd port map(clock, s_reset, s_ligar_sonar, s_echo, s_transmitir, s_recebe_dado, s_entrada_serial,
-                          s_trigger, s_pwm, s_saida_serial, s_dado_recebido, s_medida_pronto, s_tx_pronto, s_rx_pronto, alerta_proximidade,
-                          s_db_angulo, s_db_distancia, s_db_posicao, s_dado_tx, s_estado_tx_dados_sonar, s_estado_tx, s_estado_rx, s_estado_hscr04);
+                          s_trigger, s_pwm, s_saida_serial, s_dado_recebido, s_medida_pronto, s_tx_pronto, s_rx_pronto, s_alerta_proximidade,
+                          s_db_angulo, s_db_distancia, s_db_posicao, s_dado_tx, s_estado_tx_dados_sonar, s_estado_tx, s_estado_rx, s_estado_hscr04, s_girar);
 
     MUX1: mux_4x1_n generic map(BITS => 4) port map(s_db_posicao, s_estado_tx, s_estado_tx_dados_sonar, s_db_estado, selector, hex1);
     
@@ -131,5 +137,19 @@ begin
     trigger <= s_trigger;
     pwm <= s_pwm;
     saida_serial <= s_saida_serial;
+	 
+	 db_reset <= reset;
+	 db_ligar <= ligar;
+	 db_selector <= selector;
+	 db_girar <= s_girar;
+	 db_recebe_dado <= recebe_dado;
+	 db_saida_serial <= s_saida_serial;
+	 db_ligar_sonar <= s_ligar_sonar;
+	 alerta_proximidade <= s_alerta_proximidade;
+	 db_alerta_proximidade <= s_alerta_proximidade;
+	 
+	 scope_pwm <= s_pwm;
+	 scope_saida_serial <= s_saida_serial;
+	 
 
 end architecture;

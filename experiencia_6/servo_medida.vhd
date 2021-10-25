@@ -14,7 +14,8 @@ entity servo_medida is
         posicao: out std_logic_vector(2 downto 0);
         distancia: out std_logic_vector(11 downto 0);
         medida_pronto: out std_logic;
-        db_estado_hscr04: out std_logic_vector(3 downto 0)
+        db_estado_hscr04: out std_logic_vector(3 downto 0);
+		  db_girar: out std_logic
     );
 end entity;
 
@@ -28,6 +29,7 @@ architecture servo_medida_arch of servo_medida is
         echo: in std_logic;
         trigger: out std_logic;
         pwm: out std_logic;
+		  fim_girar: out std_logic;
         posicao: out std_logic_vector(2 downto 0);
         distancia: out std_logic_vector(11 downto 0);
         medida_pronto: out std_logic;
@@ -36,9 +38,9 @@ architecture servo_medida_arch of servo_medida is
     end component;
 
     component servo_medida_uc port(
-        clock, reset, ligar, medida_pronto : in  std_logic;
-        gira, mede :                         out std_logic;
-        estado_hex :                         out std_logic_vector (3 downto 0)
+        clock, reset, ligar, medida_pronto, fim_girar : in  std_logic;
+        gira, mede :                                    out std_logic;
+        estado_hex :                                    out std_logic_vector (3 downto 0)
     );
     end component;
 
@@ -48,7 +50,7 @@ architecture servo_medida_arch of servo_medida is
     );
     end component;
 
-    signal s_reset, s_ligar, s_echo, s_trigger, s_girar, s_medir, s_pwm, s_medida_pronto : std_logic;
+    signal s_reset, s_ligar, s_echo, s_trigger, s_girar, s_medir, s_pwm, s_medida_pronto, s_fim_girar : std_logic;
     signal s_posicao : std_logic_vector (2 downto 0);
     signal s_distancia : std_logic_vector (11 downto 0); 
     signal s_estado : std_logic_vector (3 downto 0);
@@ -60,14 +62,16 @@ begin
     s_ligar <= ligar;
     s_echo <= echo;
 
-    FD: servo_medida_fd port map(clock, s_reset, s_girar, s_medir, s_echo, s_trigger, s_pwm, s_posicao, s_distancia, s_medida_pronto, s_estado_hscr04);
+    FD: servo_medida_fd port map(clock, s_reset, s_girar, s_medir, s_echo, s_trigger, s_pwm, s_fim_girar, s_posicao, s_distancia, s_medida_pronto, s_estado_hscr04);
 
-    UC: servo_medida_uc port map(clock, s_reset, s_ligar, s_medida_pronto, s_girar, s_medir, s_estado);
+    UC: servo_medida_uc port map(clock, s_reset, s_ligar, s_medida_pronto, s_fim_girar, s_girar, s_medir, s_estado);
 
     posicao <= s_posicao;
     trigger <= s_trigger;
     pwm <= s_pwm;
     medida_pronto <= s_medida_pronto;
     db_estado_hscr04 <= s_estado_hscr04;
+	 db_girar <= s_girar;
+	 distancia <= s_distancia;
 
 end architecture;

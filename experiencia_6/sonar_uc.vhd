@@ -59,7 +59,8 @@ begin
     end process;
 
     -- logica de saida (Moore)
-    with Eatual select
+		  
+	 with Eatual select
         ligar_sonar <= '1' when mede, '0' when others;
     
     with Eatual select
