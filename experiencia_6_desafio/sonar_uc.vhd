@@ -11,7 +11,7 @@ entity sonar_uc is
         transmitir: out std_logic;
         ligar_sonar: out std_logic;
 		  estado_hex: out std_logic_vector (3 downto 0);
-          dado_recebido: in std_logic_vector (8 downto 0);
+          dado_recebido: in std_logic_vector (7 downto 0);
           enable_reg: out std_logic;
           halt: in std_logic
     );
@@ -40,9 +40,9 @@ begin
 
       case Eatual is
 
-        when inicial =>          if ligar='1' then   Eprox <= mede;
+        when inicial =>          if ligar='1' then   Eprox <= caractere;
                                  elsif halt='1' then Eprox <= inicial;
-                                 else                Eprox <= caractere;
+                                 else                Eprox <= inicial;
                                  end if;
 
         when caractere =>        if dado_recebido="01110000"    then Eprox <= registra;

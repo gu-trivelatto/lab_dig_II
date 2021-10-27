@@ -21,7 +21,7 @@ entity sonar is
 		  db_girar: out std_logic;
 		  db_saida_serial, db_recebe_dado, db_ligar_sonar: out std_logic;
 		  scope_pwm, scope_saida_serial: out std_logic;
-		  db_alerta_proximidade: out std_logic
+		  db_alerta_proximidade, db_halt: out std_logic
     );
 end entity;
 
@@ -36,7 +36,7 @@ architecture sonar_arch of sonar is
         transmitir: out std_logic;
         ligar_sonar: out std_logic;
 		  estado_hex: out std_logic_vector (3 downto 0);
-          dado_recebido: in std_logic_vector (8 downto 0);
+          dado_recebido: in std_logic_vector (7 downto 0);
           enable_reg: out std_logic;
           halt: in std_logic
     );
@@ -155,6 +155,7 @@ begin
 	 
 	 scope_pwm <= s_pwm;
 	 scope_saida_serial <= s_saida_serial;
+	 db_halt <= s_halt;
 	 
 
 end architecture;

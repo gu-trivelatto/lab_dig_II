@@ -1,0 +1,181 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : -5.079
+TNS   : -27.728
+
+Type  : Slow 1100mV 85C Model Setup 'clock'
+Slack : -4.560
+TNS   : -560.090
+
+Type  : Slow 1100mV 85C Model Setup 'reset'
+Slack : -3.332
+TNS   : -41.013
+
+Type  : Slow 1100mV 85C Model Hold 'clock'
+Slack : -2.109
+TNS   : -3.861
+
+Type  : Slow 1100mV 85C Model Hold 'reset'
+Slack : 0.822
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : 3.188
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'clock'
+Slack : -2.459
+TNS   : -365.050
+
+Type  : Slow 1100mV 85C Model Removal 'clock'
+Slack : 0.656
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock'
+Slack : -0.538
+TNS   : -222.993
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'reset'
+Slack : 0.173
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : 0.180
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : -5.238
+TNS   : -28.460
+
+Type  : Slow 1100mV 0C Model Setup 'clock'
+Slack : -4.575
+TNS   : -556.666
+
+Type  : Slow 1100mV 0C Model Setup 'reset'
+Slack : -3.491
+TNS   : -42.395
+
+Type  : Slow 1100mV 0C Model Hold 'clock'
+Slack : -2.134
+TNS   : -4.008
+
+Type  : Slow 1100mV 0C Model Hold 'reset'
+Slack : 0.813
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : 3.249
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'clock'
+Slack : -2.225
+TNS   : -328.321
+
+Type  : Slow 1100mV 0C Model Removal 'clock'
+Slack : 0.625
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock'
+Slack : -0.538
+TNS   : -226.864
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'reset'
+Slack : 0.146
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : 0.197
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : -2.260
+TNS   : -12.163
+
+Type  : Fast 1100mV 85C Model Setup 'clock'
+Slack : -1.949
+TNS   : -133.989
+
+Type  : Fast 1100mV 85C Model Setup 'reset'
+Slack : -1.079
+TNS   : -12.844
+
+Type  : Fast 1100mV 85C Model Hold 'clock'
+Slack : -0.977
+TNS   : -1.718
+
+Type  : Fast 1100mV 85C Model Hold 'reset'
+Slack : 0.450
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : 1.957
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'clock'
+Slack : -1.604
+TNS   : -176.341
+
+Type  : Fast 1100mV 85C Model Removal 'clock'
+Slack : 0.291
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock'
+Slack : -0.093
+TNS   : -25.083
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'reset'
+Slack : -0.078
+TNS   : -0.726
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : 0.330
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : -2.169
+TNS   : -11.680
+
+Type  : Fast 1100mV 0C Model Setup 'clock'
+Slack : -1.734
+TNS   : -105.386
+
+Type  : Fast 1100mV 0C Model Setup 'reset'
+Slack : -0.988
+TNS   : -11.399
+
+Type  : Fast 1100mV 0C Model Hold 'clock'
+Slack : -0.954
+TNS   : -1.716
+
+Type  : Fast 1100mV 0C Model Hold 'reset'
+Slack : 0.431
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : 1.952
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'clock'
+Slack : -1.353
+TNS   : -148.967
+
+Type  : Fast 1100mV 0C Model Removal 'clock'
+Slack : 0.266
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock'
+Slack : -0.095
+TNS   : -25.980
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'reset'
+Slack : -0.070
+TNS   : -0.568
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'sonar_fd:FD|tx_dados_sonar:TX|tx_dados_sonar_fd:FD|uart_8N2:UART|tx_serial_8N2:TX|tx_serial_tick_uc:U1_UC|Eatual.final'
+Slack : 0.349
+TNS   : 0.000
+
+------------------------------------------------------------

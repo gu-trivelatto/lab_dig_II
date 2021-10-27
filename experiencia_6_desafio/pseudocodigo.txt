@@ -1,0 +1,12 @@
+pseudocódigo: sistema de sonar
+entradas: ligar, reset, echo
+saídas: trigger, pwm, saida_serial, alerta_proximidade
+1. loop infinito
+2.      enquanto ligar=0 espera
+3.      enquanto ligar=1
+4.          posicione servomotor
+5.          medir distância ao objeto
+6.          se distância < 20cm, ativar a saída alerta_proximidade
+7.          transmitir dados do sonar
+8.          aguarda 2 segundos
+9. fim do loop

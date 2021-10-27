@@ -27,7 +27,7 @@ entity sonar_fd is
         db_estado_hscr04: out std_logic_vector(3 downto 0);
 		  db_girar: out std_logic;
           enable_reg: in std_logic;
-          halt: out std_logic;
+          halt: out std_logic
     );
 end entity;
 
@@ -75,16 +75,13 @@ architecture sonar_fd_arch of sonar_fd is
     );
     end component;
 
-    component registrador_n
-        generic (
-            constant N: integer 
-        );
+    component registrador_n_1
         port (
             clock:  in  std_logic;
             clear:  in  std_logic;
             enable: in  std_logic;
-            D:      in  std_logic_vector (N-1 downto 0);
-            Q:      out std_logic_vector (N-1 downto 0) 
+            D:      in  std_logic;
+            Q:      out std_logic 
         );
     end component;
 
@@ -119,7 +116,7 @@ begin
 
     ROM: rom_8x24 port map(s_posicao, s_angulo);
 
-    REG: registrador_n generic map(N=1) port map(clock, open, s_enable_reg, s_parada_interno, s_parada_out);
+    REG: registrador_n_1 port map(clock, '0', s_enable_reg, s_parada_interno, s_parada_out);
 
     trigger <= s_trigger;
     pwm <= s_pwm;
@@ -154,9 +151,9 @@ begin
 
     process (s_dado_recebido)
     begin
-        if s_dado_recebido == "01110000" then
+        if s_dado_recebido = "01110000" then
             s_parada_interno <= '1';
-        elsif s_dado_recebido == "01100011" then
+        elsif s_dado_recebido = "01100011" then
             s_parada_interno <= '0';
         else
             s_parada_interno <= '0';

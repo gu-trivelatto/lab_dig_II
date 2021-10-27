@@ -1,0 +1,49 @@
+Quartus Prime Archive log --	C:/Users/mypc/Desktop/Prova T3BB1/sonar.qarlog
+
+Archive:	C:/Users/mypc/Desktop/Prova T3BB1/sonar.qar
+Date:		Tue Oct 26 09:25:35 2021
+Quartus Prime		16.1.0 Build 196 10/24/2016 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/mypc/Desktop/Prova T3BB1/contador_bcd_4digitos.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/contador_m.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/contadorg_m.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/contadorg_updown_m.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/controle_servo_3.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/deslocador_n.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/edge_detector.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/gerador_pulso.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/hex7seg.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/interface_hcsr04.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/interface_hcsr04_fd.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/interface_hcsr04_uc.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/mux_4x1_n.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/mux_8x1_n.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/registrador_n.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/registrador_n_1.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/rom_8x24.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/rx_serial_8N2.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/rx_serial_8N2_fd.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/rx_serial_tick_uc.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/servo_medida.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/servo_medida_fd.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/servo_medida_uc.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/sonar.qpf
+C:/Users/mypc/Desktop/Prova T3BB1/sonar.qsf
+C:/Users/mypc/Desktop/Prova T3BB1/sonar.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/sonar_fd.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/sonar_uc.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/teste_movimentacao_servomotor.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/teste_tx_dados_sonar.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/tx_dados_sonar.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/tx_dados_sonar_fd.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/tx_dados_sonar_uc.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/tx_serial_8N2.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/tx_serial_8N2_fd.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/tx_serial_tick_uc.vhd
+C:/Users/mypc/Desktop/Prova T3BB1/uart_8N2.vhd
+c:/intelfpga_lite/16.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 38 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
